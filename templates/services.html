@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}Services | IsaacCyber{% endblock %}
+{% block content %}
+
+<section class="page-header">
+    <h1>My Services</h1>
+    <p>What I can do for you</p>
+</section>
+
+<section class="services-full">
+    <div class="service-block">
+        <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
+        <h3>Cybersecurity Services</h3>
+        <ul>
+            <li>Penetration Testing (Web, Network, Mobile)</li>
+            <li>Vulnerability Assessment & Reporting</li>
+            <li>Security Audits & Compliance</li>
+            <li>Threat Modeling & Risk Analysis</li>
+            <li>Security Awareness Training</li>
+        </ul>
+    </div>
+
+    <div class="service-block">
+        <div class="service-icon"><i class="fas fa-code"></i></div>
+        <h3>Web Development</h3>
+        <ul>
+            <li>Full-Stack Web Apps with Flask & Python</li>
+            <li>MySQL Database Design & Management</li>
+            <li>RESTful API Development</li>
+            <li>HTML5, CSS3, JavaScript Frontend</li>
+            <li>Deployment & Maintenance</li>
+        </ul>
+    </div>
+
+    <div class="service-block">
+        <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+        <h3>Web Design</h3>
+        <ul>
+            <li>Modern Responsive Website Design</li>
+            <li>UI/UX Design & Prototyping</li>
+            <li>Landing Page Design</li>
+            <li>Website Redesign & Optimization</li>
+            <li>Mobile-First Approach</li>
+        </ul>
+    </div>
+
+    <div class="service-block">
+        <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
+        <h3>Digital Marketing</h3>
+        <ul>
+            <li>Search Engine Optimization (SEO)</li>
+            <li>Social Media Marketing & Management</li>
+            <li>Content Strategy & Copywriting</li>
+            <li>Google Analytics & AdWords</li>
+            <li>Email Marketing Campaigns</li>
+        </ul>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Ready to Start Your Project?</h2>
+    <p>Let's work together to bring your ideas to life securely.</p>
+    <a href="{{ url_for('contact') }}" class="btn btn-primary">Contact Me</a>
+</section>
+
+{% endblock %}

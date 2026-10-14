@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}About | IsaacCyber{% endblock %}
+{% block content %}
+
+<section class="page-header">
+    <h1>About Me</h1>
+    <p>Get to know the person behind the code</p>
+</section>
+
+<section class="about-content">
+    <div class="about-grid">
+        <div class="about-text">
+            <h2>Who I Am</h2>
+            <p>
+                I'm a multi-disciplinary tech professional with a deep passion for
+                cybersecurity, web development, design, and digital marketing. My journey
+                in tech started with a curiosity about how systems work — and how to
+                secure them.
+            </p>
+            <p>
+                Over the years, I've combined my skills in <strong>Python, Flask, MySQL,
+                and HTML</strong> to build secure and modern web applications. I also
+                specialize in <strong>penetration testing</strong> and <strong>digital
+                marketing</strong>, which allows me to deliver end-to-end solutions —
+                from design to deployment, security to promotion.
+            </p>
+            <p>
+                I believe that great technology should be secure, accessible, and
+                beautifully designed. That's what I aim for in every project.
+            </p>
+            <div class="info-grid">
+                <div><strong>Name:</strong> Isaac</div>
+                <div><strong>Role:</strong> Cybersecurity Pro & Developer</div>
+                <div><strong>Location:</strong> Remote / Worldwide</div>
+                <div><strong>Freelance:</strong> Available</div>
+                <div><strong>Email:</strong> fortunethunder7@gmail.com</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="skills-section">
+    <h2 class="section-title">Technical Proficiency</h2>
+    <div class="skills-grid">
+        {% for skill in skills %}
+        <div class="skill">
+            <div class="skill-info">
+                <span>{{ skill.name }}</span>
+                <span>{{ skill.percentage }}%</span>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-fill" data-width="{{ skill.percentage }}"></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

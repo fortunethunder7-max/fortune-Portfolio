@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}Home | Isaac Portfolio{% endblock %}
+{% block content %}
+
+<section class="hero">
+    <div class="hero-content">
+        <p class="hero-tag">Welcome to my portfolio</p>
+        <h1>Hi, I'm <span class="highlight">Isaac</span></h1>
+        <h2 class="typed-text">
+            <span id="typed"></span>
+        </h2>
+        <p class="hero-desc">
+            A passionate Cybersecurity Professional, Web Designer, and Web Developer
+            specializing in Python, Flask, MySQL, and HTML — combining security,
+            design, and digital marketing to build safe and effective digital experiences.
+        </p>
+        <div class="hero-buttons">
+            <a href="https://www.youtube.com/@Thunderboy_77" class="btn btn-primary">View My Work</a>
+            <a href="mailto:fortunethunder7@gmail.com?subject=Hire%20Me%20-%20Project%20Inquiry&body=Hi%20Isaac,%0A%0AI'd%20like%20to%20hire%20you%20for..." class="btn btn-outline">Hire Me</a>
+        </div>
+    </div>
+</section>
+
+<section class="services-preview">
+    <h2 class="section-title">What I Do</h2>
+    <div class="cards-grid">
+        <div class="card">
+            <i class="fas fa-shield-halved"></i>
+            <h3>Cybersecurity</h3>
+            <p>Penetration testing, vulnerability assessment, and security audits to protect your digital assets.</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-code"></i>
+            <h3>Web Development</h3>
+            <p>Full-stack development with Python, Flask, MySQL, and modern HTML/CSS/JavaScript.</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-paint-brush"></i>
+            <h3>Web Design</h3>
+            <p>Clean, responsive, and user-friendly designs that convert visitors to customers.</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-bullhorn"></i>
+            <h3>Digital Marketing</h3>
+            <p>SEO, social media, and content strategy to grow your online presence.</p>
+        </div>
+    </div>
+</section>
+
+<section class="skills-section">
+    <h2 class="section-title">My Skills</h2>
+    <div class="skills-grid">
+        {% for skill in skills %}
+        <div class="skill">
+            <div class="skill-info">
+                <span>{{ skill.name }}</span>
+                <span>{{ skill.percentage }}%</span>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-fill" data-width="{{ skill.percentage }}"></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Let's Build Something Secure Together</h2>
+    <p>Have a project in mind? Let's discuss how I can help.</p>
+    <a href="{{ url_for('contact') }}" class="btn btn-primary">Get In Touch</a>
+</section>
+
+{% endblock %}

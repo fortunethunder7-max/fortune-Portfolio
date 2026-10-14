@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Portfolio | Isaac{% endblock %}
+{% block content %}
+
+<section class="page-header">
+    <h1>My Portfolio</h1>
+    <p>A selection of my recent projects</p>
+</section>
+
+<section class="portfolio-section">
+    <div class="filter-buttons">
+        <a href="{{ url_for('portfolio', category='all') }}"
+           class="filter-btn {% if selected == 'all' %}active{% endif %}">All</a>
+        <a href="{{ url_for('portfolio', category='cybersecurity') }}"
+           class="filter-btn {% if selected == 'cybersecurity' %}active{% endif %}">Cybersecurity</a>
+        <a href="{{ url_for('portfolio', category='webdev') }}"
+           class="filter-btn {% if selected == 'webdev' %}active{% endif %}">Web Development</a>
+        <a href="{{ url_for('portfolio', category='webdesign') }}"
+           class="filter-btn {% if selected == 'webdesign' %}active{% endif %}">Web Design</a>
+        <a href="{{ url_for('portfolio', category='marketing') }}"
+           class="filter-btn {% if selected == 'marketing' %}active{% endif %}">Marketing</a>
+    </div>
+
+    <div class="projects-grid">
+        {% for project in projects %}
+        <div class="project-card">
+            <div class="project-icon">
+                {% if project.category == 'cybersecurity' %}
+                    <i class="fas fa-shield-halved"></i>
+                {% elif project.category == 'webdev' %}
+                    <i class="fas fa-code"></i>
+                {% elif project.category == 'webdesign' %}
+                    <i class="fas fa-paint-brush"></i>
+                {% else %}
+                    <i class="fas fa-bullhorn"></i>
+                {% endif %}
+            </div>
+            <span class="project-tag">{{ project.category }}</span>
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+            <p class="tech-stack"><strong>Tech:</strong> {{ project.tech_stack }}</p>
+            <a href="{{ project.link }}" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+        </div>
+        {% else %}
+        <p class="no-projects">No projects found in this category.</p>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}
