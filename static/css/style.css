@@ -520,23 +520,6 @@ section { padding: 4rem 2rem; }
     .page-header h1 { font-size: 2rem; }
     .contact-grid { grid-template-columns: 1fr; }
 }
-.hero-photo {
-    width: 260px;
-    height: 260px;
-    margin: 0 auto;
-    padding: 5px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #2563eb, #7c3aed, #f97316);
-    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.35);
-}
-.hero-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    border-radius: 50%;
-    border: 4px solid #fff;
-}
 /* ===== Hero ===== */
 .hero {
     min-height: 85vh;
@@ -559,13 +542,6 @@ section { padding: 4rem 2rem; }
 }
 
 /* --- Photo (top-left) --- */
-.hero-photo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.25rem;
-    animation: fadeInLeft 1s ease;
-}
 
 .photo-ring {
     width: 320px;
@@ -748,4 +724,159 @@ section { padding: 4rem 2rem; }
 @media (max-width: 500px) {
     .photo-ring { width: 200px; height: 200px; }
     .hero h1 { font-size: 2rem; }
+}
+/* ---------- Hero layout ---------- */
+.hero-inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+/* ---------- Photo area ---------- */
+.hero-photo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.photo-frame {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    padding: 6px;
+    background: conic-gradient(from 0deg, #00d4ff, #7c3aed, #ff4ecd, #00d4ff);
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.45);
+    animation: float 5s ease-in-out infinite, spin-ring 8s linear infinite;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;   /* keeps the face in view */
+    border-radius: 50%;
+    border: 5px solid #0b0f1a;     /* match your background colour */
+    display: block;
+    animation: spin-ring-reverse 8s linear infinite; /* keeps photo upright */
+    /* If the photo is still tilted, uncomment and adjust: */
+    /* transform: rotate(-60deg) scale(1.5); */
+}
+
+/* soft glowing blob behind the photo */
+.photo-blob {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(0,212,255,.35), rgba(124,58,237,.25), transparent 70%);
+    filter: blur(30px);
+    z-index: 0;
+    animation: pulse 4s ease-in-out infinite;
+}
+.photo-frame { z-index: 1; }
+
+/* ---------- Floating badges ---------- */
+.badge {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .5rem .9rem;
+    font-size: .85rem;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    animation: float 4s ease-in-out infinite;
+}
+.badge i { color: #00d4ff; }
+.badge-1 { top: 8%;    left: -2%;  animation-delay: 0s; }
+.badge-2 { top: 45%;   right: -6%; animation-delay: 1s; }
+.badge-3 { bottom: 10%; left: 2%;  animation-delay: 2s; }
+
+/* ---------- "Open to work" pill ---------- */
+.status {
+    position: absolute;
+    bottom: -4%;
+    right: 8%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .4rem .9rem;
+    font-size: .8rem;
+    font-weight: 600;
+    color: #fff;
+    background: #111827;
+    border-radius: 999px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.35);
+}
+.status .dot {
+    width: 10px;
+    height: 10px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(34,197,94,.7);
+    animation: ping 1.8s infinite;
+}
+
+/* ---------- Animations ---------- */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+}
+@keyframes pulse {
+    0%, 100% { transform: scale(1);   opacity: .8; }
+    50%      { transform: scale(1.1); opacity: 1; }
+}
+@keyframes ping {
+    0%   { box-shadow: 0 0 0 0 rgba(34,197,94,.7); }
+    70%  { box-shadow: 0 0 0 10px rgba(34,197,94,0); }
+    100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 850px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .hero-photo { order: -1; }              /* photo on top */
+    .photo-frame { width: 240px; height: 240px; }
+    .photo-blob  { width: 280px; height: 280px; }
+    .badge { font-size: .72rem; padding: .35rem .7rem; }
+    .badge-2 { right: 0; }
+    .hero-buttons { justify-content: center; }
+}
+.photo-frame      { animation: float 5s ease-in-out infinite; }
+.photo-frame img  { animation: none; }
+/* ===== FINAL hero photo overrides (make photo visible) ===== */
+.hero-inner { width: 100%; }
+.hero-photo {
+    width: auto; height: auto;
+    background: none; box-shadow: none; border-radius: 0;
+    animation: none; flex-direction: row;
+    position: relative; display: flex;
+    justify-content: center; align-items: center;
+    padding: 1.5rem; min-width: 0;
+}
+.hero-photo .photo-frame img {
+    width: 100%; height: 100%; border-radius: 50%;
+    object-fit: cover; object-position: center;
+    display: block; border: 5px solid #0b0f1a;
+}
+.photo-frame { animation: float 5s ease-in-out infinite; }
+.photo-frame img { animation: none; }
+@media (max-width: 850px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-photo { order: -1; }
 }
