@@ -493,10 +493,15 @@ section { padding: 4rem 2rem; }
     transform: translateY(-5px) scale(1.1);
     box-shadow: 0 10px 25px rgba(214, 36, 159, 0.6);
 }
-.footer-bottom {
-    text-align: center; padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
-    color: var(--text-muted); font-size: 0.9rem;
+
+/* Telegram – sky blue */
+.socials a:nth-child(7) {
+    background: #229ED9;
+}
+.socials a:nth-child(7):hover {
+    background: #229ED9;
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(34, 158, 217, 0.6);
 }
 
 /* Responsive */
@@ -514,4 +519,233 @@ section { padding: 4rem 2rem; }
     .section-title { font-size: 1.8rem; }
     .page-header h1 { font-size: 2rem; }
     .contact-grid { grid-template-columns: 1fr; }
+}
+.hero-photo {
+    width: 260px;
+    height: 260px;
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #7c3aed, #f97316);
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.35);
+}
+.hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+    border: 4px solid #fff;
+}
+/* ===== Hero ===== */
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    background:
+        radial-gradient(ellipse at top right, rgba(37, 99, 235, 0.15), transparent 55%),
+        radial-gradient(ellipse at bottom left, rgba(124, 58, 237, 0.12), transparent 55%);
+}
+
+.hero-wrapper {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* --- Photo (top-left) --- */
+.hero-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    animation: fadeInLeft 1s ease;
+}
+
+.photo-ring {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    padding: 6px;
+    background: linear-gradient(135deg,
+        #2563eb 0%,
+        #7c3aed 40%,
+        #f97316 75%,
+        #10b981 100%);
+    box-shadow:
+        0 0 60px rgba(37, 99, 235, 0.35),
+        0 0 90px rgba(124, 58, 237, 0.25);
+    position: relative;
+    animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.photo-ring::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        #2563eb, #7c3aed, #f97316, #10b981, #2563eb);
+    z-index: -1;
+    filter: blur(22px);
+    opacity: 0.55;
+    animation: rotate 8s linear infinite;
+}
+
+.photo-ring img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 4px solid var(--dark);
+}
+
+/* Status badge */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(16, 185, 129, 0.12);
+    color: var(--green);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    padding: 0.4rem 1rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-badge .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--green);
+    animation: blink 1.6s ease-in-out infinite;
+}
+
+/* --- Text content (right) --- */
+.hero-content {
+    max-width: 640px;
+    animation: fadeInRight 1s ease;
+}
+
+.hero-tag {
+    color: var(--orange);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.hero h1 { font-size: 3.5rem; margin-bottom: 1rem; line-height: 1.1; }
+
+.highlight {
+    background: linear-gradient(135deg, var(--primary), var(--purple), var(--orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+}
+
+.typed-text {
+    font-size: 1.6rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    min-height: 2.5rem;
+}
+
+.hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Hero mini socials --- */
+.hero-socials {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.hero-socials a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+}
+
+.hero-socials a:hover {
+    transform: translateY(-4px) scale(1.1);
+    color: #fff;
+    border-color: transparent;
+}
+
+.hero-socials a:nth-child(1):hover { background: #171515; }
+.hero-socials a:nth-child(2):hover { background: #1da1f2; }
+.hero-socials a:nth-child(3):hover { background: #ff0000; }
+.hero-socials a:nth-child(4):hover { background: #1877f2; }
+.hero-socials a:nth-child(5):hover { background: #229ED9; }
+
+/* --- Animations --- */
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 60px rgba(37, 99, 235, 0.35), 0 0 90px rgba(124, 58, 237, 0.25); }
+    50%      { box-shadow: 0 0 80px rgba(249, 115, 22, 0.4), 0 0 110px rgba(37, 99, 235, 0.3); }
+}
+@keyframes rotate {
+    to { transform: rotate(360deg); }
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.3; }
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .hero-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        text-align: center;
+    }
+    .hero-photo { align-items: center; }
+    .photo-ring { width: 240px; height: 240px; }
+    .hero h1 { font-size: 2.5rem; }
+    .typed-text { font-size: 1.3rem; }
+    .hero-buttons, .hero-socials { justify-content: center; }
+    .hero-content { max-width: 100%; margin: 0 auto; }
+}
+
+@media (max-width: 500px) {
+    .photo-ring { width: 200px; height: 200px; }
+    .hero h1 { font-size: 2rem; }
 }
